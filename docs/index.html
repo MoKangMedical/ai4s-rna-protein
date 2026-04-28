@@ -1,112 +1,98 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>AI4S RNA-Protein - MoKangMedical</title>
-<meta name="description" content="Deep learning platform for predicting RNA-protein interactions and binding sites.">
-<meta property="og:title" content="AI4S RNA-Protein - MoKangMedical">
-<meta property="og:description" content="Deep learning platform for predicting RNA-protein interactions and binding sites.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://mokangmedical.github.io/ai4s-rna-protein/">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#x1f3e5;</text></svg>">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI4S RNA-Protein</title>
+<meta name="description" content="RNA-蛋白质相互作用预测平台">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧬</text></svg>">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--p:#10b981;--bg:#0a0a0f;--s:#12121a;--t:#e2e8f0;--m:#94a3b8;--b:rgba(255,255,255,.06)}
-body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
-a{color:var(--p);text-decoration:none}
-.nav{position:fixed;top:0;left:0;right:0;background:rgba(10,10,15,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--b);z-index:1000;padding:.8rem 2rem;display:flex;align-items:center;justify-content:space-between}
-.nb{font-size:1.2rem;font-weight:700;color:var(--p)}
-.nl{display:flex;gap:1.5rem;align-items:center}
-.nl a{color:var(--m);font-size:.85rem;transition:color .2s}
-.nl a:hover{color:var(--t)}
-.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 2rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,#10b98115,transparent 70%)}
-.hc{position:relative;max-width:800px}
-.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-.03em;background:linear-gradient(135deg,#fff,#10b981);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:1rem}
-.sub{font-size:1.3rem;color:var(--m);margin-bottom:2rem}
-.cat{display:inline-block;padding:.4rem 1rem;background:#10b98122;border:1px solid #10b98144;border-radius:999px;font-size:.8rem;color:var(--p);margin-bottom:2rem}
-.btn{display:inline-block;padding:.8rem 2rem;background:var(--p);color:#fff;border-radius:8px;font-weight:600;transition:all .2s}
-.btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px #10b98140}
-.bo{display:inline-block;padding:.6rem 1.5rem;border:1px solid var(--p);color:var(--p);border-radius:8px;font-weight:500;transition:all .2s}
-.bo:hover{background:var(--p);color:#fff}
-.sec{padding:5rem 2rem;max-width:1200px;margin:0 auto}
-.st{text-align:center;font-size:2.2rem;font-weight:700;margin-bottom:.5rem}
-.ss{text-align:center;color:var(--m);margin-bottom:3rem}
-.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
-.fc{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:2rem;transition:all .3s}
-.fc:hover{border-color:#10b98140;transform:translateY(-4px)}
-.fi{width:40px;height:40px;background:#10b98120;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:1rem}
-.fc h3{font-size:1.1rem;margin-bottom:.5rem}
-.fc p{color:var(--m);font-size:.9rem}
-.pg{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem;margin-top:2rem}
-.pc{background:var(--s);border:1px solid var(--b);border-radius:12px;padding:2rem;text-align:center;transition:all .3s}
-.pc:hover{border-color:#10b98140}
-.pr{font-size:2.5rem;font-weight:800;color:var(--p);margin:1rem 0}
-.pc p{color:var(--m);margin-bottom:1.5rem}
-.cta{text-align:center;padding:5rem 2rem;background:linear-gradient(135deg,#10b98110,transparent)}
-footer{text-align:center;padding:2rem;color:var(--m);font-size:.8rem;border-top:1px solid var(--b)}
-footer a{color:var(--m)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin:3rem 0}
-.stat{text-align:center}
-.stat .num{font-size:2.5rem;font-weight:800;color:var(--p)}
-.stat .lbl{color:var(--m);font-size:.85rem}
-@media(max-width:768px){.nl{display:none}.fg,.pg{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}}
+:root{--bg:#0b0f1a;--bg2:#111827;--t:#f1f5f9;--t2:#94a3b8;--a:#f59e0b;--bdr:#1e293b}
+body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--t);line-height:1.6}
+a{color:var(--a);text-decoration:none}
+.ct{max-width:1000px;margin:0 auto;padding:0 1.5rem}
+.hero{min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:6rem 1.5rem 4rem}
+.hero h1{font-size:2.5rem;font-weight:800;margin-bottom:1rem}
+.hero h1 .g{background:linear-gradient(135deg,var(--a),#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{font-size:1.1rem;color:var(--t2);margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto}
+.fg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin:3rem 0}
+.fc{background:var(--bg2);border:1px solid var(--bdr);border-radius:12px;padding:1.5rem;transition:all .3s}
+.fc:hover{border-color:var(--a);transform:translateY(-2px)}
+.fc h3{font-size:1rem;font-weight:600;margin-bottom:.3rem}
+.fc p{color:var(--t2);font-size:.88rem}
+.btns{display:flex;gap:1rem;justify-content:center;margin-top:2rem}
+.btn{padding:.8rem 2rem;border-radius:10px;font-weight:600;cursor:pointer;transition:all .3s;border:none;display:inline-block}
+.bp{background:linear-gradient(135deg,var(--a),#8b5cf6);color:#fff}
+.bp:hover{transform:translateY(-2px);color:#fff}
+.bo{background:transparent;color:var(--t);border:1px solid var(--bdr)}
+ft{background:var(--bg2);border-top:1px solid var(--bdr);padding:2rem 0;text-align:center;margin-top:4rem}
+ft p{color:var(--t2);font-size:.85rem}
+.el{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap;margin-bottom:1rem}
+.el a{background:#1e293b;padding:.3rem .8rem;border-radius:6px;font-size:.8rem;color:var(--t2)}
+/* Responsive improvements */
+@media(max-width:768px){
+.hero{padding:4rem 1.5rem 2rem}
+.hero h1{font-size:2rem}
+.features,.grid{grid-template-columns:1fr}
+.price-cards{grid-template-columns:1fr}
+.stats{gap:1.5rem}
+.nav{padding:0.8rem 1rem}
+.nav div{gap:0.3rem}
+.nav a{margin:0 0.4rem;font-size:0.8rem}
+.container{padding:1rem}
+}
+@media(max-width:480px){
+.hero h1{font-size:1.5rem}
+.card{padding:1.2rem}
+.metric .value{font-size:2rem}
+}
 </style>
+  <meta property="og:title" content="AI4S RNA-Protein">
+  <meta property="og:description" content="RNA-蛋白质相互作用预测平台">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://mokangmedical.github.io/ai4s-rna-protein/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"AI4S RNA-Protein","description":"RNA-蛋白质相互作用预测平台","url":"https://mokangmedical.github.io/ai4s-rna-protein/","provider":{"@type":"Organization","name":"AI4S RNA-Protein"}}
+</script>
 </head>
 <body>
-<nav class="nav">
-<a href="https://mokangmedical.github.io/opc-homepage/" class="nb">MoKangMedical</a>
-<div class="nl">
-<a href="#features">Features</a>
-<a href="#pricing">Pricing</a>
-<a href="https://github.com/MoKangMedical/ai4s-rna-protein"><a href="pricing.html">定价</a>
-<a href="https://github.com/MoKangMedical">GitHub</a>
-<a href="https://mokangmedical.github.io/opc-homepage/">Ecosystem</a>
+<section class="hero"><div class="ct">
+<h1>🧬 AI4S RNA-Protein<br><span class="g">RNA-蛋白质相互作用预测平台</span></h1>
+<p class="sub">RNA-蛋白质相互作用预测平台</p>
+<div class="fg"><div class="fc"><h3>🧬 结构预测</h3><p>RNA-蛋白质复合物结构预测</p></div>
+<div class="fc"><h3>🔗 相互作用</h3><p>结合位点预测</p></div>
+<div class="fc"><h3>📊 功能分析</h3><p>RNA功能注释</p></div>
+<div class="fc"><h3>🧪 药物设计</h3><p>靶向RNA的药物设计</p></div>
+<div class="fc"><h3>📈 进化分析</h3><p>RNA序列进化分析</p></div>
+<div class="fc"><h3>📦 数据库</h3><p>RNA-蛋白质互作数据库</p></div></div>
+<div class="btns">
+<a href="https://github.com/AI4S RNA-Protein" target="_blank" class="btn bp">View on GitHub</a>
+<a href="https://mokangmedical.github.io/opc-homepage/" class="btn bo">OPC Ecosystem</a>
 </div>
-</nav>
-<section class="hero">
-<div class="hc">
-<span class="cat">Structural Biology</span>
-<h1>AI4S RNA-Protein</h1>
-<p class="sub">RNA-Protein Interaction Prediction</p>
-<div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
-<a href="https://github.com/MoKangMedical/ai4s-rna-protein" class="btn">View on <a href="pricing.html">定价</a>
-<a href="https://github.com/MoKangMedical">GitHub</a>
-<a href="#features" class="bo">Explore Features</a>
+</div></section>
+<ft><div class="ct">
+<div class="el">
+<a href="https://mokangmedical.github.io/opc-homepage/">OPC Home</a>
+<a href="https://mokangmedical.github.io/DrugMind/">DrugMind</a>
+<a href="https://mokangmedical.github.io/PharmaSim/">PharmaSim</a>
 </div>
-</div>
+<p>© 2026 AI4S RNA-Protein by AI4S RNA-Protein. MIT License.</p>
+</div></ft>
+
+<section style="text-align:center;padding:4rem 2rem;background:linear-gradient(135deg,rgba(99,102,241,.1),transparent)">
+<h2 style="font-size:1.8rem;margin-bottom:1rem">Ready to get started?</h2>
+<p style="color:#94a3b8;margin-bottom:2rem">Join leading organizations using ai4s-rna-protein</p>
+<a href="https://github.com/AI4S RNA-Protein/ai4s-rna-protein" style="display:inline-block;padding:.8rem 2rem;background:#6366f1;color:#fff;border-radius:8px;font-weight:600;text-decoration:none">Get Started Free</a>
 </section>
-<section class="sec" id="features">
-<h2 class="st">Capabilities</h2>
-<p class="ss">Deep learning platform for predicting RNA-protein interactions and binding sites.</p>
-<div class="fg"><div class="fc"><div class="fi">◆</div><h3>RBP Prediction</h3><p>Advanced rbp prediction capabilities powered by AI</p></div><div class="fc"><div class="fi">◇</div><h3>Binding Site Mapping</h3><p>Advanced binding site mapping capabilities powered by AI</p></div><div class="fc"><div class="fi">◈</div><h3>Structure Prediction</h3><p>Advanced structure prediction capabilities powered by AI</p></div><div class="fc"><div class="fi">◉</div><h3>Therapeutic Targets</h3><p>Advanced therapeutic targets capabilities powered by AI</p></div><div class="fc"><div class="fi">◊</div><h3>High-Throughput</h3><p>Advanced high-throughput capabilities powered by AI</p></div><div class="fc"><div class="fi">○</div><h3>3D Visualization</h3><p>Advanced 3d visualization capabilities powered by AI</p></div>
-</div>
-</section>
-<section class="sec" id="pricing">
-<h2 class="st">Pricing</h2>
-<p class="ss">Flexible plans for every scale</p>
-<div class="pg">
-<div class="pc"><h3>Starter</h3><div class="pr">Free</div><p>Basic features and community support</p><a href="https://github.com/MoKangMedical/ai4s-rna-protein" class="bo">Get Started</a></div>
-<div class="pc"><h3>Professional</h3><div class="pr">$299/mo</div><p>Full access with priority support</p><a href="https://github.com/MoKangMedical/ai4s-rna-protein" class="bo">Start Trial</a></div>
-<div class="pc"><h3>Enterprise</h3><div class="pr">Custom</div><p>Custom deployment with SLA</p><a href="https://github.com/MoKangMedical/ai4s-rna-protein" class="bo">Contact Sales</a></div>
-</div>
-</section>
-<section class="cta">
-<h2>Ready to get started?</h2>
-<p style="color:var(--m);margin-bottom:2rem">Join leading organizations using AI4S RNA-Protein</p>
-<a href="https://github.com/MoKangMedical/ai4s-rna-protein" class="btn">Get Started Free</a>
-</section>
-<footer>
-<p>&copy; 2025 MoKangMedical. All rights reserved. | <a href="https://mokangmedical.github.io/opc-homepage/">Ecosystem</a> | <a href="https://github.com/MoKangMedical"><a href="pricing.html">定价</a>
-<a href="https://github.com/MoKangMedical">GitHub</a></p>
-</footer>
+<footer style="background:#0a0e1a;border-top:1px solid #1e2d4a;padding:3rem 0 2rem;margin-top:4rem"><div style="max-width:1200px;margin:0 auto;padding:0 2rem"><div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;margin-bottom:2rem"><div><h4 style="color:#e2e8f0;font-size:1rem;margin-bottom:1rem">AI4S RNA-Protein</h4><p style="color:#64748b;font-size:.85rem;line-height:1.6">AI-powered healthcare innovation ecosystem with 70+ open source projects.</p></div><div><h4 style="color:#e2e8f0;font-size:1rem;margin-bottom:1rem">Core Platforms</h4><a href="https://mokangmedical.github.io/PharmaSim/" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">PharmaSim</a><a href="https://mokangmedical.github.io/tianyan/" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">Tianyan</a><a href="https://mokangmedical.github.io/DrugMind/" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">DrugMind</a></div><div><h4 style="color:#e2e8f0;font-size:1rem;margin-bottom:1rem">Research</h4><a href="https://mokangmedical.github.io/drugclip-platform/" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">DrugClip</a><a href="https://mokangmedical.github.io/virtual-cell/" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">Virtual Cell</a><a href="https://mokangmedical.github.io/darwin-framework/" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">Darwin</a></div><div><h4 style="color:#e2e8f0;font-size:1rem;margin-bottom:1rem">Connect</h4><a href="https://github.com/AI4S RNA-Protein" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">GitHub</a><a href="https://mokangmedical.github.io/opc-homepage/" style="display:block;color:#94a3b8;font-size:.85rem;margin-bottom:.5rem;text-decoration:none">Ecosystem</a></div></div><div style="text-align:center;padding-top:1.5rem;border-top:1px solid #1e2d4a"><p style="color:#64748b;font-size:.82rem">© 2024-2026 AI4S RNA-Protein. All rights reserved.</p></div></div></footer>
 <script>
-// Scroll reveal animation
+// Scroll reveal
 const obs=new IntersectionObserver(e=>{e.forEach(i=>{if(i.isIntersecting){i.target.style.opacity='1';i.target.style.transform='translateY(0)';obs.unobserve(i.target)}})},{threshold:.1});
-document.querySelectorAll('.fc,.pc').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='all 0.6s ease';obs.observe(el)});
-// Counter animation
-document.querySelectorAll('.stat .num').forEach(el=>{const t=parseInt(el.dataset.val||0);let c=0;const s=t/60;const tm=setInterval(()=>{c+=s;if(c>=t){c=t;clearInterval(tm)}el.textContent=Math.floor(c).toLocaleString()},25)});
+document.querySelectorAll('.fc,.pc,.card,div[class*=card],div[class*=feature]').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='all .6s cubic-bezier(.16,1,.3,1)';obs.observe(el)});
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth'})})});
 </script>
 </body>
 </html>
